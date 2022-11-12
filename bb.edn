@@ -1,0 +1,17 @@
+;; https://book.babashka.org/#cli
+{:min-bb-version "0.9.160"
+ 
+ :paths ["src"]
+ 
+ :deps {this/project {:local/root "."}}
+
+ :tasks
+ {:requires ([babashka.fs :as fs])
+
+  install
+  {:doc "Install dependencies"
+   :task (clojure "-A:dev")}
+
+  maze:ascii
+  {:doc "Prints a maze in the terminal using ASCII art"
+   :task (clojure "-M -m mazes.core")}}}

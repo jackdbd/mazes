@@ -1,0 +1,10 @@
+{:paths ["src"]
+
+ :deps  {orchestra/orchestra {:mvn/version "2021.01.01-1"}
+         org.clojure/clojure {:mvn/version "1.11.1"}
+         quil/quil {:mvn/version "4.0.0-SNAPSHOT-1"}}
+
+ :aliases
+ {:dev {:extra-paths ["dev"]}
+
+  :neil {:project {:name mazes/mazes}}}}

@@ -1,10 +1,10 @@
-{:paths ["src"]
+{:aliases {:dev {:extra-deps {djblue/portal {:mvn/version "0.57.3"}
+                              orchestra/orchestra {:mvn/version "2021.01.01-1"}
+                              vvvvalvalval/scope-capture {:mvn/version "0.3.3"}}
+                 :extra-paths ["dev"]}
+           :neil {:project {:name mazes/mazes}}}
 
- :deps  {orchestra/orchestra {:mvn/version "2021.01.01-1"}
-         org.clojure/clojure {:mvn/version "1.11.1"}
-         quil/quil {:mvn/version "4.0.0-SNAPSHOT-1"}}
+ :paths ["src"]
 
- :aliases
- {:dev {:extra-paths ["dev"]}
-
-  :neil {:project {:name mazes/mazes}}}}
+ :deps  {org.clojure/clojure {:mvn/version "1.12.0"}
+         quil/quil {:mvn/version "4.0.0-SNAPSHOT-1"}}}

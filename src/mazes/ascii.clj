@@ -78,7 +78,8 @@
   (st/instrument `row-middle-level)
   (row-middle-level {:columns 3} "")
   (row-middle-level {:columns 3} 2)
-  (st/unstrument `row-middle-level))
+  (st/unstrument `row-middle-level)
+  )
 
 (s/fdef row-level
   :args (s/cat :maze ::maze-cols :row nat-int?)

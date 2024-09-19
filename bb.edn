@@ -6,5 +6,5 @@
          {:doc "Install dependencies of the dev alias"
           :task (clojure "-A:dev")}
          maze:ascii
-         {:doc "Prints a maze in the terminal using ASCII art"
-          :task (clojure "-M -m mazes.core")}}}
+         {:doc "Render a maze in ASCII art (in the terminal)"
+          :task (clojure "-M:dev --main mazes.core")}}}

@@ -1,5 +1,6 @@
 (ns mazes.core
   "Maze algorithms from Jamis Buck's book: 'Mazes for Programmers'."
+  {:author "Giacomo Debidda"}
   (:gen-class)
   (:require
    [mazes.ascii :as ascii :refer [render]]

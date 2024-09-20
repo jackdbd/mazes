@@ -3,7 +3,7 @@
   (:require
    [clojure.string :as str]
    [clojure.spec.alpha :as s]
-   [orchestra.core :refer [defn-spec]]
+   [mazes.spec]
    [orchestra.spec.test :as st]))
 
 (def ^:private corner "+")
@@ -13,25 +13,27 @@
 (def ^:private vertical-link " ")
 (def ^:private horizontal-link "   ")
 
-(declare bottom-maze-boundary)
+(s/fdef bottom-maze-boundary
+  :args (s/cat :columns :mazes.spec/columns)
+  :ret string?)
 
-(s/def ::maze (s/keys :req-un [:mazes.spec/rows :mazes.spec/columns]))
-
-(s/def ::maze-cols (s/keys :req-un [:mazes.spec/columns]
-                           :opt-un [:mazes.spec/rows]))
-
-(defn-spec bottom-maze-boundary string?
-  [columns pos-int?]
+(defn bottom-maze-boundary
+  [columns]
   (str/join (flatten (concat corner
                              (repeat columns (concat horizontal-wall
                                                      corner))))))
 
 (comment
   (st/instrument `bottom-maze-boundary)
-  (def cols 3)
   (bottom-maze-boundary "")
-  (bottom-maze-boundary cols)
-  (st/unstrument `bottom-maze-boundary))
+  (bottom-maze-boundary 3)
+  (st/unstrument `bottom-maze-boundary)
+  )
+
+(s/def ::maze (s/keys :req-un [:mazes.spec/rows :mazes.spec/columns]))
+
+(s/def ::maze-cols (s/keys :req-un [:mazes.spec/columns]
+                           :opt-un [:mazes.spec/rows]))
 
 (s/fdef row-top-level
   :args (s/cat :maze ::maze-cols :row nat-int?)
@@ -113,5 +115,7 @@
   (st/instrument `render)
   (render {:columns 0 :rows -1}) 
   (render {:columns 3 :rows 4})
+  (tap> (render {:columns 3 :rows 4}))
+  (println (render {:columns 3 :rows 4}))
   (st/unstrument `render)
   )

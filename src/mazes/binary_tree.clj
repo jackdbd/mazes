@@ -8,7 +8,8 @@
   both the northern row and the eastern column to be unbroken corridors."
   (:require [clojure.spec.alpha :as s]
             [orchestra.spec.test :as st]
-            [mazes.grid :as g]))
+            [mazes.grid :as g]
+            [mazes.protocols :refer [has-pos? link! positions]]))
 
 (s/fdef maybe-p1
   :args (s/cat :grid :unq/grid :p0 :mazes.spec/pos-2d)
@@ -23,7 +24,7 @@
   (let [last-col (dec (:columns grid))
         direction (rand-nth [:north :east])]
     (cond
-      (not (g/has-pos? grid pos)) nil
+      (not (has-pos? grid pos)) nil
       (and (= row 0) (= col last-col)) nil
       (= row 0) (g/east grid pos)
       (= col last-col) (g/north grid pos)
@@ -47,7 +48,7 @@
   "Reducing function to create bidirectional links between cells."
   [grid p0]
   (if-let [p1 (maybe-p1 grid p0)]
-    (g/link! grid p0 p1)
+    (link! grid p0 p1)
     grid))
 
 (comment
@@ -65,7 +66,7 @@
   "Converts a grid (with no links) into a maze (with links)."
   [grid] {:pre [(s/valid? :unq/grid grid)]
           :post [(s/valid? :unq/grid %)]}
-  (reduce reducer grid (g/positions grid)))
+  (reduce reducer grid (positions grid)))
 
 (comment
   (st/instrument `grid->maze)

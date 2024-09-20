@@ -13,7 +13,7 @@
   (tap> (maze 3 4))
 
   (println (render (maze 3 4)))
-  (println (render (maze 8 8)))
+  (println (render (maze 8 8))) 
 
   (p/close portal)
   )

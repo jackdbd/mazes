@@ -7,4 +7,4 @@
           :task (clojure "-A:dev")}
          maze:ascii
          {:doc "Render a maze in ASCII art (in the terminal)"
-          :task (clojure "-M:dev --main mazes.core")}}}
+          :task (clojure "-M:dev --main mazes.core" "8" "8")}}}

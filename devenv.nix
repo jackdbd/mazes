@@ -7,6 +7,7 @@
 }: {
   enterShell = ''
     hello
+    versions
   '';
 
   enterTest = ''
@@ -18,7 +19,8 @@
 
   env.GREET = "devenv";
 
-  # languages.clojure.enable = true;
+  # https://github.com/cachix/devenv/tree/main/src/modules/languages
+  languages.clojure.enable = true;
   languages.nix.enable = true;
 
   # https://devenv.sh/packages/
@@ -37,8 +39,11 @@
   scripts.hello.exec = "echo hello from $GREET";
 
   scripts.versions.exec = ''
-    echo "Versions"
+    echo "=== Versions ==="
     ${pkgs.babashka}/bin/bb --version
+    clojure-lsp --version
+    java --version
     ${pkgs.neil}/bin/neil --version
+    echo "=== === ==="
   '';
 }

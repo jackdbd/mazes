@@ -20,7 +20,9 @@
   env.GREET = "devenv";
 
   # https://github.com/cachix/devenv/tree/main/src/modules/languages
+  # This installs clojure-lsp and the OpenJDK
   languages.clojure.enable = true;
+  # This installs deadnix, statix, vulnix
   languages.nix.enable = true;
 
   # https://devenv.sh/packages/
@@ -32,7 +34,8 @@
 
   # https://devenv.sh/pre-commit-hooks/
   pre-commit.hooks = {
-    alejandra.enable = true; # Format Nix files
+    alejandra.enable = true; # Format .nix files
+    statix.enable = true; # Lint .nix files
   };
 
   # https://devenv.sh/scripts/

@@ -4,7 +4,6 @@
                  :extra-paths ["dev"]}
            :neil {:project {:name mazes/mazes}}}
 
- :paths ["src"]
-
  :deps  {org.clojure/clojure {:mvn/version "1.12.0"}
-         quil/quil {:mvn/version "4.0.0-SNAPSHOT-1"}}}
+         quil/quil {:mvn/version "4.3.1563"}}
+ :paths ["src"]}

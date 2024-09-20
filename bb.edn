@@ -1,10 +1,20 @@
 {:deps {this/project {:local/root "."}}
  :min-bb-version "0.9.160"
- :paths ["src"]
- :tasks {:requires ([babashka.fs :as fs])
+ :paths ["bb" "src"]
+ :tasks {:requires ([babashka.fs :as fs]
+                    [tasks])
          deps:dev
          {:doc "Install dependencies of the dev alias"
           :task (clojure "-A:dev")}
+         deps:upgrade
+         {:doc "Upgrade all dependencies"
+          :task (shell "neil dep upgrade")}
+         licenses
+         {:doc "List all licenses of the dependencies"
+          :task (shell "neil license list")}
          maze:ascii
          {:doc "Render a maze in ASCII art (in the terminal)"
-          :task (clojure "-M:dev --main mazes.core" "8" "8")}}}
+          :task (clojure "-M:dev --main mazes.core" "8" "12")}
+         print-classpath
+         {:doc "Prints the classpath"
+          :task (tasks/print-classpath)}}}

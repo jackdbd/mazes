@@ -5,5 +5,6 @@
            :neil {:project {:name mazes/mazes}}}
 
  :deps  {org.clojure/clojure {:mvn/version "1.12.0"}
-         quil/quil {:mvn/version "4.3.1563"}}
+         quil/quil {:mvn/version "4.3.1563"}
+         random-seed/random-seed {:mvn/version "1.0.0"}}
  :paths ["src"]}

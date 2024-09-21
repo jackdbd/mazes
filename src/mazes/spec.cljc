@@ -5,6 +5,8 @@
 
 (s/def ::rows nat-int?)
 (s/def ::columns nat-int?)
+(s/def ::row-index int?)
+(s/def ::column-index int?)
 
 (comment
   (s/explain ::rows 2.2)
@@ -15,7 +17,7 @@
   (s/conform ::columns 2)
   )
 
-(s/def ::pos-2d (s/tuple ::rows ::columns))
+(s/def ::pos-2d (s/tuple ::row-index ::column-index))
 
 (comment
   (s/explain ::pos-2d "")

@@ -12,8 +12,8 @@
          licenses
          {:doc "List all licenses of the dependencies"
           :task (shell "neil license list")}
-         maze:ascii
-         {:doc "Render a maze in ASCII art (in the terminal)"
+         mazes:ascii
+         {:doc "Render all mazes in ASCII art (in the terminal)"
           :task (clojure "-M:dev --main mazes.core" "8" "12")}
          print-classpath
          {:doc "Prints the classpath"

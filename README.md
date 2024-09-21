@@ -31,10 +31,10 @@ This projects can be managed using the [babashka tasks](https://book.babashka.or
 bb tasks
 ```
 
-Print an ASCII art maze in the terminal:
+Print all mazes in the terminal, in ASCII art:
 
 ```sh
-bb run maze:ascii # run can be omitted
+bb run mazes:ascii # run can be omitted
 ```
 
 ## Notes

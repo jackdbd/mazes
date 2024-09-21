@@ -1,4 +1,4 @@
-(ns mazes.ascii
+(ns mazes.renderer.ascii
   "ASCII representation of a maze."
   (:require
    [clojure.string :as str]
@@ -104,7 +104,7 @@
   :ret string?)
 
 (defn render
-  "Renders a maze with ASCII art."
+  "Renders a maze as a string using ASCII art."
   [{:keys [rows columns] :as maze}]
   (let [f (fn [row]
             (str (row-level maze row) "\n"))]
